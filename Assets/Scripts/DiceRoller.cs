@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiceRoller : MonoBehaviour {
+public class DiceRoller : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         DiceValues = new int[4];
         theStateManager = GameObject.FindObjectOfType<StateManager>();
-	}
+    }
 
     StateManager theStateManager;
 
@@ -19,14 +21,16 @@ public class DiceRoller : MonoBehaviour {
     public Sprite[] DiceImageZero;
 
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
 		
-	}
+    }
 
-    public void RollTheDice() {
+    public void RollTheDice()
+    {
 
-        if(theStateManager.IsDoneRolling == true)
+        if (theStateManager.IsDoneRolling == true)
         {
             // We've already rolled this turn.
             return;
@@ -43,7 +47,7 @@ public class DiceRoller : MonoBehaviour {
         theStateManager.DiceTotal = 0;
         for (int i = 0; i < DiceValues.Length; i++)
         {
-            DiceValues[i] = Random.Range( 0, 2 );
+            DiceValues[i] = Random.Range(0, 2);
             theStateManager.DiceTotal += DiceValues[i];
 
             // Update the visuals to show the dice roll
@@ -52,15 +56,15 @@ public class DiceRoller : MonoBehaviour {
             // We have 4 children, each is an image of the die. So grab that
             // child, and update its Image component to use the correct Sprite
 
-            if(DiceValues[i] == 0)
+            if (DiceValues[i] == 0)
             {
                 this.transform.GetChild(i).GetComponent<Image>().sprite = 
-                    DiceImageZero[ Random.Range(0, DiceImageZero.Length) ];
+                    DiceImageZero[Random.Range(0, DiceImageZero.Length)];
             }
             else
             {
                 this.transform.GetChild(i).GetComponent<Image>().sprite = 
-                    DiceImageOne[ Random.Range(0, DiceImageOne.Length) ];                
+                    DiceImageOne[Random.Range(0, DiceImageOne.Length)];                
             }
 
             // If we had an animation, we'd have to wait for it to finish before
