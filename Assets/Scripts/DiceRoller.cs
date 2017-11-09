@@ -8,28 +8,29 @@ public class DiceRoller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         DiceValues = new int[4];
+        theStateManager = GameObject.FindObjectOfType<StateManager>();
 	}
-	
+
+    StateManager theStateManager;
+
+    public int[] DiceValues;
+
+    public Sprite[] DiceImageOne;
+    public Sprite[] DiceImageZero;
+
+
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public int[] DiceValues;
-    public int DiceTotal;
-
-    public bool IsDoneRolling = false;
-
-    public Sprite[] DiceImageOne;
-    public Sprite[] DiceImageZero;
-
-    public void NewTurn() {
-        // This is the start of a player's turn.
-        // We don't have a roll for them yet.
-        IsDoneRolling = false;
-    }
-
     public void RollTheDice() {
+
+        if(theStateManager.IsDoneRolling == true)
+        {
+            // We've already rolled this turn.
+            return;
+        }
 
         // In Ur, you roll four dice (classically Tetrahedron), which
         // have half their faces have a value of "1" and half have a value
@@ -39,11 +40,11 @@ public class DiceRoller : MonoBehaviour {
 
         // We are going to use random number generation instead.
 
-        DiceTotal = 0;
+        theStateManager.DiceTotal = 0;
         for (int i = 0; i < DiceValues.Length; i++)
         {
             DiceValues[i] = Random.Range( 0, 2 );
-            DiceTotal += DiceValues[i];
+            theStateManager.DiceTotal += DiceValues[i];
 
             // Update the visuals to show the dice roll
             // TODO: This could include playing an animation -- either 2D or 3D
@@ -64,7 +65,7 @@ public class DiceRoller : MonoBehaviour {
 
             // If we had an animation, we'd have to wait for it to finish before
             // we set doneRolling, but we can just set it right away
-            IsDoneRolling = true;
+            theStateManager.IsDoneRolling = true;
 
         }
 
