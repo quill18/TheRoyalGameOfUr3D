@@ -3,25 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiceTotalDisplay : MonoBehaviour {
+public class DiceTotalDisplay : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-        theDiceRoller = GameObject.FindObjectOfType<DiceRoller>();
-	}
+    // Use this for initialization
+    void Start()
+    {
+        theStateManager = GameObject.FindObjectOfType<StateManager>();
+    }
 
-    DiceRoller theDiceRoller;
+    StateManager theStateManager;
 	
-	// Update is called once per frame
-	void Update () {
-        if(theDiceRoller.IsDoneRolling == false)
+    // Update is called once per frame
+    void Update()
+    {
+        if (theStateManager.IsDoneRolling == false)
         {
             GetComponent<Text>().text = "= ?";
         }
         else
         {
-            GetComponent<Text>().text = "= " + theDiceRoller.DiceTotal;
+            GetComponent<Text>().text = "= " + theStateManager.DiceTotal;
         }
 
-	}
+    }
 }
