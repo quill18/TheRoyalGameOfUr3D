@@ -67,12 +67,13 @@ public class DiceRoller : MonoBehaviour
                     DiceImageOne[Random.Range(0, DiceImageOne.Length)];                
             }
 
-            // If we had an animation, we'd have to wait for it to finish before
-            // we set doneRolling, but we can just set it right away
-            theStateManager.IsDoneRolling = true;
-
         }
 
+        // If we had an animation, we'd have to wait for it to finish before
+        // we set doneRolling, but we can just set it right away
+        //theStateManager.DiceTotal = 15;
+        theStateManager.IsDoneRolling = true;
+        theStateManager.CheckLegalMoves();
 
 
         //Debug.Log("Rolled: " + DiceTotal);
