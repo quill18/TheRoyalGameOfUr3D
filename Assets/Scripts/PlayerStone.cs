@@ -12,7 +12,7 @@ public class PlayerStone : MonoBehaviour
     }
 
     public Tile StartingTile;
-    Tile currentTile;
+    public Tile CurrentTile { get; protected set; }
 
     public int PlayerId;
     public StoneStorage MyStoneStorage;
@@ -119,12 +119,12 @@ public class PlayerStone : MonoBehaviour
         else
         {
             // The movement queue is empty, so we are done animating!
-            Debug.Log("Done animating!");
+            //Debug.Log("Done animating!");
             this.isAnimating = false;
-            theStateManager.IsDoneAnimating = true;
+            theStateManager.AnimationsPlaying--;
 
             // Are we on a roll again space?
-            if(currentTile != null && currentTile.IsRollAgain)
+            if(CurrentTile != null && CurrentTile.IsRollAgain)
             {
                 theStateManager.RollAgain();
             }
@@ -142,7 +142,11 @@ public class PlayerStone : MonoBehaviour
     void OnMouseUp()
     {
         // TODO:  Is the mouse over a UI element? In which case, ignore this click.
+        MoveMe();
+    }
 
+    public void MoveMe()
+    {
         // Is this the correct player?
         if (theStateManager.CurrentPlayerId != PlayerId)
         {
@@ -184,7 +188,7 @@ public class PlayerStone : MonoBehaviour
             if(CanLegallyMoveTo(finalTile) == false)
             {
                 // Not allowed!
-                finalTile = currentTile;
+                finalTile = CurrentTile;
                 moveQueue = null;
                 return;
             }
@@ -194,30 +198,35 @@ public class PlayerStone : MonoBehaviour
             {
                 //finalTile.PlayerStone.ReturnToStorage();
                 stoneToBop = finalTile.PlayerStone;
-                stoneToBop.currentTile.PlayerStone = null;
-                stoneToBop.currentTile = null;
+                stoneToBop.CurrentTile.PlayerStone = null;
+                stoneToBop.CurrentTile = null;
             }
         }
 
         this.transform.SetParent(null); // Become Batman
 
         // Remove ourselves from our old tile
-        if(currentTile != null)
+        if(CurrentTile != null)
         {
-            currentTile.PlayerStone = null;
+            CurrentTile.PlayerStone = null;
         }
 
-        // Put ourselves in our new tile.
-        finalTile.PlayerStone = this;
+        // Even before the animation is done, set our current tile to the new tile
+        CurrentTile = finalTile;
+        if( finalTile.IsScoringSpace == false )   // "Scoring" tiles are always "empty"
+        {
+            finalTile.PlayerStone = this;
+        }
 
         moveQueueIndex = 0;
-        currentTile = finalTile;
+
         theStateManager.IsDoneClicking = true;
         this.isAnimating = true;
+        theStateManager.AnimationsPlaying++;
     }
 
     // Return the list of tiles __ moves ahead of us
-    Tile[] GetTilesAhead( int spacesToMove )
+    public Tile[] GetTilesAhead( int spacesToMove )
     {
         if (spacesToMove == 0)
         {
@@ -227,7 +236,7 @@ public class PlayerStone : MonoBehaviour
         // Where should we end up?
 
         Tile[] listOfTiles = new Tile[spacesToMove];
-        Tile finalTile = currentTile;
+        Tile finalTile = CurrentTile;
 
         for (int i = 0; i < spacesToMove; i++)
         {
@@ -261,16 +270,22 @@ public class PlayerStone : MonoBehaviour
         return listOfTiles;
     }
 
-    // Return the final tile we'd land on if we moved __ spaces
-    Tile GetTileAhead( int spacesToMove )
+    public Tile GetTileAhead(  )
     {
-        Debug.Log(spacesToMove);
+        return GetTileAhead( theStateManager.DiceTotal );
+    }
+
+
+    // Return the final tile we'd land on if we moved __ spaces
+    public Tile GetTileAhead( int spacesToMove )
+    {
+        //Debug.Log(spacesToMove);
         Tile[] tiles = GetTilesAhead( spacesToMove );
 
         if(tiles == null)
         {
             // We aren't moving at all, so just return our current tile?
-            return currentTile;
+            return CurrentTile;
         }
 
         return tiles[ tiles.Length-1 ];
@@ -278,6 +293,12 @@ public class PlayerStone : MonoBehaviour
 
     public bool CanLegallyMoveAhead( int spacesToMove )
     {
+        if( CurrentTile != null && CurrentTile.IsScoringSpace )
+        {
+            // This stone is already on a scoring tile, so we can't move.
+            return false;
+        }
+
         Tile theTile = GetTileAhead( spacesToMove );
 
         return CanLegallyMoveTo( theTile );
@@ -285,7 +306,7 @@ public class PlayerStone : MonoBehaviour
 
     bool CanLegallyMoveTo( Tile destinationTile )
     {
-        Debug.Log("CanLegallyMoveTo: " + destinationTile);
+        //Debug.Log("CanLegallyMoveTo: " + destinationTile);
 
         if(destinationTile == null)
         {
@@ -329,6 +350,9 @@ public class PlayerStone : MonoBehaviour
         Debug.Log("ReturnToStorage");
         //currentTile.PlayerStone = null;
         //currentTile = null;
+
+        this.isAnimating=true;
+        theStateManager.AnimationsPlaying++;
 
         moveQueue = null;
 

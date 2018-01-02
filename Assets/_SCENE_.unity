@@ -205,7 +205,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 131641311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -367, y: -331, z: 0}
+  m_LocalPosition: {x: -448.5, y: -331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1129024770}
@@ -355,6 +355,11 @@ Prefab:
       propertyPath: NextTiles.Array.data[0]
       value: 
       objectReference: {fileID: 1298206705}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -451,7 +456,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214231754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 367, y: 331, z: 0}
+  m_LocalPosition: {x: 448.5, y: 331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 131641312}
@@ -807,7 +812,7 @@ MonoBehaviour:
   DiceTotal: 0
   IsDoneRolling: 0
   IsDoneClicking: 0
-  IsDoneAnimating: 0
+  AnimationsPlaying: 0
   NoLegalMovesPopup: {fileID: 309473613}
 --- !u!4 &603601581
 Transform:
@@ -903,6 +908,11 @@ Prefab:
       propertyPath: NextTiles.Array.data[0]
       value: 
       objectReference: {fileID: 1068831794}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -1062,6 +1072,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 33a7203c18ebed34e8edce1054a2d887, type: 2}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -1194,7 +1209,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 774247781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.130005, y: -331, z: 0}
+  m_LocalPosition: {x: -23.369995, y: -331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 214231758}
@@ -1483,6 +1498,7 @@ MonoBehaviour:
   PlayerStone: {fileID: 0}
   IsScoringSpace: 1
   IsRollAgain: 0
+  IsSideline: 0
 --- !u!1 &1010307641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1633,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 33a7203c18ebed34e8edce1054a2d887, type: 2}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -1657,7 +1678,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1087357800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -207, y: -331, z: 0}
+  m_LocalPosition: {x: -288.5, y: -331, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 296849880}
@@ -1863,6 +1884,7 @@ MonoBehaviour:
   PlayerStone: {fileID: 0}
   IsScoringSpace: 1
   IsRollAgain: 0
+  IsSideline: 0
 --- !u!4 &1111297341
 Transform:
   m_ObjectHideFlags: 0
@@ -2157,6 +2179,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 33a7203c18ebed34e8edce1054a2d887, type: 2}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -2339,7 +2366,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1267627368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -362, y: -260.74, z: 0}
+  m_LocalPosition: {x: -443.5, y: -260.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 214231758}
@@ -2491,6 +2518,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 33a7203c18ebed34e8edce1054a2d887, type: 2}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -2558,6 +2590,11 @@ Prefab:
       propertyPath: NextTiles.Array.data[0]
       value: 
       objectReference: {fileID: 1074493644}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -2755,6 +2792,11 @@ Prefab:
       objectReference: {fileID: 517801821}
     - target: {fileID: 1778137283223896, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3109,6 +3151,11 @@ Prefab:
       propertyPath: NextTiles.Array.data[0]
       value: 
       objectReference: {fileID: 192960330}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -3339,6 +3386,11 @@ Prefab:
       propertyPath: NextTiles.Array.data[0]
       value: 
       objectReference: {fileID: 1827554251}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -3429,6 +3481,11 @@ Prefab:
       propertyPath: NextTiles.Array.data[0]
       value: 
       objectReference: {fileID: 832134605}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0
@@ -3532,6 +3589,11 @@ Prefab:
       propertyPath: NextTiles.Array.data[0]
       value: 
       objectReference: {fileID: 710598235}
+    - target: {fileID: 114100598389807136, guid: 96b34ab20de577640a943d306ea7559e,
+        type: 2}
+      propertyPath: IsSideline
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96b34ab20de577640a943d306ea7559e, type: 2}
   m_IsPrefabParent: 0

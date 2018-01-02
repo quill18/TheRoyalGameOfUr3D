@@ -8,29 +8,36 @@ public class StateManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		
+        PlayerAIs = new AIPlayer[NumberOfPlayers];
+
+        PlayerAIs[0] = null;    // Is a human player
+        //PlayerAIs[0] = new AIPlayer_UtilityAI();
+        PlayerAIs[1] = new AIPlayer_UtilityAI();
     }
 
     public int NumberOfPlayers = 2;
     public int CurrentPlayerId = 0;
+
+    AIPlayer[] PlayerAIs;
 
     public int DiceTotal;
 
     // NOTE: enum / statemachine is probably a stronger choice, but I'm aiming for simpler to explain.
     public bool IsDoneRolling = false;
     public bool IsDoneClicking = false;
-    public bool IsDoneAnimating = false;
+    //public bool IsDoneAnimating = false;
+    public int AnimationsPlaying = 0;
 
     public GameObject NoLegalMovesPopup;
 
     public void NewTurn()
     {
-        Debug.Log("NewTurn");
+        //Debug.Log("NewTurn");
         // This is the start of a player's turn.
         // We don't have a roll for them yet.
         IsDoneRolling = false;
         IsDoneClicking = false;
-        IsDoneAnimating = false;
+        //IsDoneAnimating = false;
 
         CurrentPlayerId = (CurrentPlayerId + 1) % NumberOfPlayers;
     }
@@ -40,7 +47,7 @@ public class StateManager : MonoBehaviour
         Debug.Log("RollAgain");
         IsDoneRolling = false;
         IsDoneClicking = false;
-        IsDoneAnimating = false;
+        //IsDoneAnimating = false;
     }
 
     // Update is called once per frame
@@ -48,12 +55,18 @@ public class StateManager : MonoBehaviour
     {
 		
         // Is the turn done?
-        if (IsDoneRolling && IsDoneClicking && IsDoneAnimating)
+        if (IsDoneRolling && IsDoneClicking && AnimationsPlaying==0)
         {
             Debug.Log("Turn is done!");
             NewTurn();
+            return;
         }
 
+        if( PlayerAIs[CurrentPlayerId] != null )
+        {
+            PlayerAIs[CurrentPlayerId].DoAI();
+        }
+            
     }
 
     public void CheckLegalMoves()
@@ -93,6 +106,8 @@ public class StateManager : MonoBehaviour
     {
         // Display message
         NoLegalMovesPopup.SetActive(true);
+
+        // TODO: Trigger animations like have the stones shake or something?
 
         // Wait 1 second
         yield return new WaitForSeconds(1f);

@@ -15,6 +15,7 @@ public class Tile : MonoBehaviour
     public PlayerStone PlayerStone;
     public bool IsScoringSpace;
     public bool IsRollAgain;
+    public bool IsSideline; // Is part of a player's private/safe area
 	
     // Update is called once per frame
     void Update()
