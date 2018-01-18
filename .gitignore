@@ -28,3 +28,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/.vs
+/NeuralNetwork/.vs/NeuralNetwork/v15/Server/sqlite3
+/NeuralNetwork/NeuralNetwork/bin/Debug
+/NeuralNetwork/NeuralNetwork/obj/Debug
+/.gitattributes
